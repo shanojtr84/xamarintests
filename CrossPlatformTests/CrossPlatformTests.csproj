@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3DD8CD09-84E3-4529-AFE7-AAC85A49F90A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrossPlatformTests</RootNamespace>
+    <AssemblyName>CrossPlatformTests</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.UITest">
+      <HintPath>..\packages\Xamarin.UITest.2.2.7\lib\net45\Xamarin.UITest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.7.2\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="DnsClient">
+      <HintPath>..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.7.2\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.7.2\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtentReports">
+      <HintPath>..\packages\ExtentReports.3.0.2\lib\ExtentReports.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Screens\AddItemScreen.cs" />
+    <Compile Include="Screens\HomeScreen.cs" />
+    <Compile Include="Tests\Test1.cs" />
+    <Compile Include="Support\XamarinUITestWrapper.cs" />
+    <Compile Include="Base\BaseScreen.cs" />
+    <Compile Include="Base\BaseTest.cs" />
+    <Compile Include="Base\AppInitializer.cs" />
+    <Compile Include="Config\AppConfigReader.cs" />
+    <Compile Include="Config\AppConfigKeys.cs" />
+    <Compile Include="Tests\Test2.cs" />
+    <Compile Include="Support\AutoUtills.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="build.sh" />
+    <None Include="app.config" />
+    <None Include="Reports\Android_Test_Report.html" />
+    <None Include="Reports\iOS_Test_Report.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EAXamarinApp\EAXamarinApp.Android\EAXamarinApp.Android.csproj">
+      <Project>{B0A773E1-E230-47CA-9AA1-B8EB353A6B50}</Project>
+      <Name>EAXamarinApp.Android</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EAXamarinApp\EAXamarinApp.iOS\EAXamarinApp.iOS.csproj">
+      <Project>{EB10F4D0-A353-425B-8789-F7E620B85901}</Project>
+      <Name>EAXamarinApp.iOS</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Screens\" />
+    <Folder Include="Tests\" />
+    <Folder Include="Support\" />
+    <Folder Include="Base\" />
+    <Folder Include="Config\" />
+    <Folder Include="Screenshots\" />
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
